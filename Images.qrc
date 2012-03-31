@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/image/dungeon">
+        <file alias="d&amp;d">image/dungeon/dungeons-dragons.jpg</file>
+        <file alias="sharn">image/dungeon/Sharn.jpg</file>
+        <file alias="no-personnage">image/dungeon/no-personnage.png</file>
+        <file alias="papyrus">image/dungeon/papyrus.jpg</file>
+    </qresource>
+    <qresource prefix="/image/button">
+        <file alias="campain">image/button/campain.png</file>
+        <file alias="map">image/button/map.png</file>
+        <file alias="personnages">image/button/personnages.jpg</file>
+        <file alias="porte">image/button/porte.gif</file>
+        <file alias="arrowBottom">image/button/arrowBottom.png</file>
+        <file alias="arrowLeft">image/button/arrowLeft.png</file>
+        <file alias="arrowRight">image/button/arrowRight.png</file>
+        <file alias="arrowTop">image/button/arrowTop.png</file>
+        <file alias="spellBook">image/button/spell_books.jpg</file>
+    </qresource>
+    <qresource prefix="/image/terrain"/>
+    <qresource prefix="/ressources/environment">
+        <file alias="1">ressources/environment/1.jpg</file>
+        <file alias="2">ressources/environment/2.jpg</file>
+        <file alias="3">ressources/environment/3.jpg</file>
+        <file alias="4">ressources/environment/4.jpg</file>
+    </qresource>
+</RCC>
