@@ -3,63 +3,102 @@ import QtQuick 1.0
 Item {
     width:  1136
     height:  768
+    property alias personnageImageSource: personnageImage.source
     Rectangle {
+        id: rectangle2
         anchors.fill: parent
-        color: 'red'
 
-        Image {
-            id: image1
-            x: 25
-            y: 25
-            width: 100
-            height: 100
-            source: "qrc:/qtquickplugin/images/template_image.png"
+        Rectangle {
+            id: rectangle1
+            width: 152
+            color: "#ffffff"
+            radius: 10
+            border.width: 0
+            border.color: "#000000"
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+
+            Image {
+                id: personnageImage
+                height: 180
+                anchors.top: parent.top
+                anchors.topMargin: 16
+                anchors.right: parent.right
+                anchors.rightMargin: 16
+                anchors.left: parent.left
+                anchors.leftMargin: 16
+                source: "qrc:/qtquickplugin/images/template_image.png"
+            }
+
+            Column {
+                x: 16
+                y: 216
+                width: 120
+                height: 512
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 16
+                anchors.right: parent.right
+                anchors.rightMargin: 16
+                anchors.left: parent.left
+                anchors.leftMargin: 16
+                spacing: 5
+                Button {
+                    id: name
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    height: 40
+                    text: "Azaleath"
+                }
+
+                Button {
+                    id: titre
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    height: 40
+                    text: "Grand mage"
+                }
+
+                Button {
+                    id: level
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    height: 40
+                    text: "Level 10"
+                }
+
+                Button {
+                    id: classe
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    height: 40
+                    text: "Mage"
+                }
+
+                Button {
+                    id: race
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    height: 40
+                    text: "Humain"
+                }
+
+            }
         }
-        Column {
-            x: 138
-            y: 25
-            spacing: 2
-            Text {
-                id: name
-                width: 80
-                height: 20
-                text: "Azaleath"
-                font.pixelSize: 12
-            }
 
-            Text {
-                id: titre
-                width: 80
-                height: 20
-                text: "Grand mage"
-                font.pixelSize: 12
-            }
-
-            Text {
-                id: level
-                width: 80
-                height: 20
-                text: "Level 10"
-                font.pixelSize: 12
-            }
-
-            Text {
-                id: classe
-                width: 80
-                height: 20
-                text: "Mage"
-                font.pixelSize: 12
-            }
-
-            Text {
-                id: race
-                width: 80
-                height: 20
-                text: "Humain"
-                font.pixelSize: 12
-            }
-
-        }
 
     }
 }

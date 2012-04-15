@@ -3,16 +3,6 @@ Rectangle {
     id: main
     width:  1366
     height:  768
-    signal personnages()
-    signal creerPersonnages()
-    signal listPersonnages()
-    signal creeScenario()
-    signal listScenario()
-    signal map()
-    signal spell()
-    signal creeSpell()
-    signal listSpell()
-    signal quitter()
     Rectangle {
         id: contentPane
         x:  25
@@ -53,12 +43,8 @@ Rectangle {
             y: 0
             width: 75
             height: 785
-            onPersonnages: viewSwitcher.switchView(personnages, 5, "instant");
-            onMap:
-            {
-                main.map()
-                viewSwitcher.switchView(map, 5, "instant");
-            }
+            onListPersonnages: viewSwitcher.switchView(personnages, 5, "instant");
+            onMap: viewSwitcher.switchView(map, 5, "instant");
         }
     }
 }

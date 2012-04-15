@@ -3,6 +3,8 @@ import Qt.labs.gestures 1.0
 
 Rectangle {
     id: container
+    width: 1311
+    height: 778
     anchors.fill: parent
     anchors.leftMargin: 75
 
@@ -43,19 +45,24 @@ Rectangle {
                 personnageName: name
                 imagePersonage: imageSources === '' ? "qrc:/image/dungeon/no-personnage" : imageSources
                 selected: ListView.isCurrentItem
-                onClicked: listChoixPerso.currentIndex = index
+                onClicked:
+                {
+                    listChoixPerso.currentIndex = index
+                    detail.personnageImageSource = imagePersonage
+                }
             }
             currentIndex: 0
         }
     }
 
-    Rectangle {
-        id: test
+    PersonnageDetailView
+    {
+        id: detail
         anchors.left: personnageList.right
         anchors.leftMargin: 0
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        PersonnageDetailView{}
     }
+
 }

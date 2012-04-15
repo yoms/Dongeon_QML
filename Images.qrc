@@ -23,4 +23,7 @@
         <file alias="3">ressources/environment/3.jpg</file>
         <file alias="4">ressources/environment/4.jpg</file>
     </qresource>
+    <qresource prefix="/image/border">
+        <file alias="border_test">image/border/border_test.jpg</file>
+    </qresource>
 </RCC>
