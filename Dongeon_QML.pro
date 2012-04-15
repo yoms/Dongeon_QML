@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui declarative
-TARGET = Test_QGraphicsMap
+TARGET = Dongeon_QML
 TEMPLATE = app
 target.path=/usr/local/bin
 INSTALLS=target
