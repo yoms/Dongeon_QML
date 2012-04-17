@@ -1,7 +1,7 @@
 #include "mapmodel.h"
 
-MapModel::MapModel(QObject *parent)
-    : QAbstractItemModel(parent)
+MapModel::MapModel(FieldTypeModel *fieldTypeModel, QObject *parent)
+    : QAbstractItemModel(parent), m_fieldTypeModel(fieldTypeModel)
 {
     QHash<int, QByteArray> roles;
     roles[URLRole] = "urlImage";
@@ -14,7 +14,7 @@ MapModel::MapModel(QObject *parent)
 void MapModel::setFields(QList<QList<Field*> >& fields)
 {
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
-    fields_m = fields;
+    m_fields = fields;
     endInsertRows();
 }
 const Field* MapModel::getField(int x, int y)
@@ -23,29 +23,29 @@ const Field* MapModel::getField(int x, int y)
         return NULL;
     if (y < 0 || y > columnSize())
         return NULL;
-    return fields_m[y][x];
+    return m_fields[y][x];
 }
 
 int MapModel::rowCount(const QModelIndex & parent) const
 {
     Q_UNUSED(parent)
-    int columnCount = fields_m.count() > 0 ? fields_m[0].count() : 0;
-    int rowCount = columnCount ? fields_m.count()*fields_m[0].count() : fields_m.count();
+    int columnCount = m_fields.count() > 0 ? m_fields[0].count() : 0;
+    int rowCount = columnCount ? m_fields.count()*m_fields[0].count() : m_fields.count();
     return rowCount;
 }
 int MapModel::columnCount(const QModelIndex & parent) const
 {
     Q_UNUSED(parent)
-    return fields_m[0].count();
+    return m_fields[0].count();
 }
 
 int MapModel::rowSize() const
 {
-   return fields_m.count();
+   return m_fields.count();
 }
 int MapModel::columnSize() const
 {
-   return fields_m[0].count();
+   return m_fields[0].count();
 }
 QVariant MapModel::data(const QModelIndex & index, int role) const
 {
@@ -53,7 +53,7 @@ QVariant MapModel::data(const QModelIndex & index, int role) const
         return QVariant();
     int x = index.row()%columnSize();
     int y = index.row()/columnSize();
-    const Field *field = fields_m[y][x];
+    const Field *field = m_fields[y][x];
     switch (role)
     {
         case URLRole:
@@ -77,4 +77,34 @@ QModelIndex MapModel::parent(const QModelIndex &child) const
 {
     Q_UNUSED(child)
     return QModelIndex();
+}
+
+void MapModel::changeSelection(int type)
+{
+    for(int i = 0; i < m_fieldSelected.size(); i++)
+    {
+        QPair<int, int> pos = m_fieldSelected[i];
+        m_fields[pos.first][pos.second] = m_fieldTypeModel->fieldForType(type);
+        qDebug() << "m_fields["<< pos.first<<"]["<<pos.second <<"]";
+    }
+    emit imageChanged();
+    m_fieldSelected.clear();
+}
+
+void MapModel::removeToSelection(int posX, int posY)
+{
+    qDebug() << "removeToSelection(int " << posX << ", int "<< posY<< ")";
+    m_fieldSelected.removeAll(QPair<int, int>(posX, posY));
+}
+
+void MapModel::addToSelection(int posX, int posY)
+{
+    qDebug() << "addToSelection(int " << posX << ", int " << posY << ")";
+    m_fieldSelected << QPair<int, int>(posX, posY);
+}
+
+QString MapModel::imageUrl(int posX, int posY)
+{
+    const Field *field = m_fields[posX][posY];
+    return field->urlImage();
 }

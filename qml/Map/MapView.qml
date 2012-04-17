@@ -4,9 +4,9 @@ import QtQuick 1.1
 Flickable
 {
     anchors.fill: parent
-    contentWidth: list.width; contentHeight:  list.height
+    contentWidth: grid.width; contentHeight:  grid.height
     Grid {
-        id: list
+        id: grid
         width: MapModel.columnSize()*32
         height: MapModel.rowSize()*32
         rows: MapModel.rowSize(); columns: MapModel.columnSize(); spacing: 0

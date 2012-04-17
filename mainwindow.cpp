@@ -12,7 +12,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    m_mapModel(&m_fieldModel, this)
 {
     ui->setupUi(this);
     MapLoader mapLoader(&m_mapModel, &m_fieldModel);

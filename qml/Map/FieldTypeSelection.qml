@@ -9,17 +9,23 @@ Rectangle
         anchors.fill: parent;
         anchors.margins: 5
         spacing: 5
+        model: FieldModel
         delegate: Item {
             height: 32
-            Rectangle
-            {
-
-                Image {
-                    id: image
-                    source: urlImage
+            property int type: fieldType
+            Image {
+                id: image
+                source: urlImage
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        MapModel.changeSelection(parent.parent.type)
+                        console.log("clicked");
+                    }
                 }
             }
         }
-        model: FieldModel
     }
 }

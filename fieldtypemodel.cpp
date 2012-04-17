@@ -4,7 +4,7 @@ FieldTypeModel::FieldTypeModel(QObject *parent) :
     QAbstractListModel(parent)
 {
     QHash<int, QByteArray> roles;
-    roles[TypeRole] = "type";
+    roles[TypeRole] = "fieldType";
     roles[UrlRole] = "urlImage";
     setRoleNames(roles);
     m_fieldTypeList[0] = Field(0,QString(":/ressources/environment/1"));

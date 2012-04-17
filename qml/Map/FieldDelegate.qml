@@ -5,6 +5,8 @@ Rectangle {
     height: 32
     width: 32
     property int type: fieldType;
+    property int posXinMap: posX;
+    property int posYinMap: posY;
     Image {
          id: image
          anchors.fill: parent
@@ -20,9 +22,24 @@ Rectangle {
         onClicked:
         {
             if(over.color == "#b00000")
-               over.color = "#00000000"
+            {
+               over.color = "#00000000";
+                MapModel.removeToSelection(posYinMap, posXinMap)
+            }
             else
-               over.color = "#55B00000"
+            {
+               over.color = "#55B00000";
+                MapModel.addToSelection(posYinMap, posXinMap)
+
+            }
         }
     }
+    Connections {
+            target: MapModel
+            onImageChanged:
+            {
+                image.source = MapModel.imageUrl(posYinMap,  posXinMap)
+                over.color = "#00000000";
+            }
+        }
 }
