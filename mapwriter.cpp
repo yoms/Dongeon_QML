@@ -28,8 +28,8 @@ void MapWriter::writeMap(int id)
                 out << ",";
                 line += ",";
             }
-            out << mapModel_m->getField(i,j).toSaveString();
-            line += mapModel_m->getField(i,j).toSaveString();
+            out << mapModel_m->getField(i,j)->toSaveString();
+            line += mapModel_m->getField(i,j)->toSaveString();
         }
         out << "\n";
         line += "\n";

@@ -1,7 +1,8 @@
-import QtQuick 1.0
+import QtQuick 1.1
+import "Component" as Component
 Item {
     id: container
-    width: 75
+    width: 200
     height: 768
     property alias state: container.state
     signal personnages()
@@ -22,129 +23,117 @@ Item {
         Column {
             id: listMenu
             anchors.fill: parent
-            anchors.leftMargin: 12
-            anchors.topMargin: 25
-            spacing: 25
+            anchors.topMargin: 2
 
-            Button {
+            Component.ListButton {
                 id: creePersonnages
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/personnages"
+                text: "Creer un personnage"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.creerPersonnages()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: listPersonnages
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/personnages"
+                text: "Liste des personnages"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.listPersonnages()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: creeScenario
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/map"
+                text: "Creer un scenario"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.creeScenario()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: listScenario
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/map"
+                text: "Lister les scenario"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.listScenario()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: creeSpell
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/map"
+                text: "Creer un sort"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.creeSpell()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: listSpell
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/map"
+                text: "Lister les sorts"
                 onClicked: {
-                    mouveContainer.start()
+
                     container.listSpell()
                 }
                 visible : false
             }
 
-            Button {
+            Component.ListButton {
                 id: personnages
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/personnages"
+                text: "Personnages"
                 onClicked:
                 {
                     container.state = "Personnages"
-                    mouveContainer.start()
+
                     container.personnages()
                 }
             }
 
-            Button {
+            Component.ListButton {
                 id: spell
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/spellBook"
+                text: "Sorts"
                 onClicked:
                 {
-                    container.state = "Scenario"
-                    mouveContainer.start()
+                    container.state = "Spell"
+
                     container.spell()
                 }
             }
 
-            Button {
+            Component.ListButton {
                 id: map
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/map"
+                text: "Scenarios"
                 onClicked:
                 {
                     container.state = "Scenario"
-                    mouveContainer.start()
+
                     container.map()
                 }
             }
 
-            Button {
+            Component.ListButton {
                 id: quitter
-                width: 50
-                height: 50
                 imageSources: "qrc:/image/button/porte"
+                text: "Quitter";
                 onClicked:
                 {
-                    mouveContainer.start()
+
                     if( container.state == "")
                         container.quitter()
                     else
@@ -181,6 +170,11 @@ Item {
                 target: spell
                 visible: false
             }
+
+            PropertyChanges {
+                target: quitter
+                text: "Retour"
+            }
         },
         State {
             name: "Scenario"
@@ -208,6 +202,11 @@ Item {
             PropertyChanges {
                 target: spell
                 visible: false
+            }
+
+            PropertyChanges {
+                target: quitter
+                text: "Retour"
             }
         },
         State {
@@ -246,12 +245,11 @@ Item {
                 target: spell
                 visible: false
             }
+
+            PropertyChanges {
+                target: quitter
+                text: "Retour"
+            }
         }
     ]
-     SequentialAnimation {
-             id: mouveContainer
-             running: false
-             NumberAnimation { target: container; property: "x"; to: container.x-75; duration: 100 }
-             NumberAnimation { target: container; property: "x"; to: container.x; duration: 100 }
-         }
 }

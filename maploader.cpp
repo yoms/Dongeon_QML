@@ -3,9 +3,10 @@
 #include <QFile>
 #include <QDebug>
 
-MapLoader::MapLoader(MapModel* mapModel)
+MapLoader::MapLoader(MapModel* mapModel, FieldTypeModel* fieldModel)
 {
-    mapModel_m = mapModel;
+    m_mapModel = mapModel;
+    m_fieldModel = fieldModel;
 }
 
 void MapLoader::loadMap(QString mapName)
@@ -19,38 +20,22 @@ void MapLoader::loadMap(QString mapName)
 
     QByteArray firstLine = file.readLine();
     int size = firstLine.remove(firstLine.size()-1,1).toInt();
-    QList<QList<Field> > fields;
+    QList<QList<Field*> > fields;
 
     for(int i = 0; i < size; i++)
     {
         QString line(file.readLine());
         line.remove("\n");
         int j = 0;
-        QList<Field> fieldsLine;
+        QList<Field*> fieldsLine;
         foreach(QString a, line.split(','))
         {
-            fieldsLine << buildField(a);
+            fieldsLine << m_fieldModel->fieldForType(a.toInt());;
             j++;
         }
         fields << fieldsLine;
     }
-    mapModel_m->setFields(fields);
+    m_mapModel->setFields(fields);
     file.close();
 }
 
-
-Field MapLoader::buildField(QString a)
-{
-    switch(a.toInt())
-    {
-    case 0:
-        return Field(Field::Grass);
-        break;
-    case 1:
-        return Field(Field::Land);
-        break;
-    case 2:
-        return Field(Field::Water);
-        break;
-    }
-}

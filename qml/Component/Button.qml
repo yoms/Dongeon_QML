@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 Item {
     id: container
@@ -17,23 +17,22 @@ Item {
         x: 0
         y: 0
         anchors.fill: parent
-        color: "#000000"
-        radius: 11
+        color: "white"
         border.color: "#000000"
+
+        Image {
+            id: images
+            anchors.fill: parent
+        }
 
         Text {
             id: text
-            color: "#ffffff"
+            color: "black"
             z: 100
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.fill: parent
             font.pixelSize: 12
-        }
-
-        Image {
-            id: images
-            anchors.fill: parent
         }
     }
 

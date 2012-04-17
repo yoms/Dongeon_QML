@@ -1,18 +1,21 @@
 <RCC>
     <qresource prefix="/qml">
-        <file>qml/Button.qml</file>
-        <file>qml/FieldDelegate.qml</file>
-        <file>qml/ImageButton.qml</file>
         <file>qml/main.qml</file>
         <file>qml/MainView.qml</file>
-        <file>qml/MapMain.qml</file>
         <file>qml/Menu.qml</file>
-        <file>qml/PersonnageDetailView.qml</file>
-        <file>qml/PersonnageListDelegate.qml</file>
-        <file>qml/PersonnageListModel.qml</file>
-        <file>qml/PersonnagesMain.qml</file>
-        <file>qml/ViewLoader.qml</file>
-        <file>qml/ViewSwitcher.qml</file>
-        <file>qml/MapChooser.qml</file>
+        <file>qml/Component/Button.qml</file>
+        <file>qml/Component/ImageButton.qml</file>
+        <file>qml/Component/ListButton.qml</file>
+        <file>qml/Map/FieldDelegate.qml</file>
+        <file>qml/Map/MapChooser.qml</file>
+        <file>qml/Map/MapMain.qml</file>
+        <file>qml/Personnage/PersonnageDetailView.qml</file>
+        <file>qml/Personnage/PersonnageListDelegate.qml</file>
+        <file>qml/Personnage/PersonnageListModel.qml</file>
+        <file>qml/Personnage/PersonnagesMain.qml</file>
+        <file>qml/Component/ViewLoader.qml</file>
+        <file>qml/Component/ViewSwitcher.qml</file>
+        <file>qml/Map/MapView.qml</file>
+        <file>qml/Map/FieldTypeSelection.qml</file>
     </qresource>
 </RCC>

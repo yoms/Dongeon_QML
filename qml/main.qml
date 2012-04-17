@@ -1,50 +1,39 @@
 import QtQuick 1.0
+import "Component" as Component
 Rectangle {
     id: main
     width:  1366
     height:  768
     Rectangle {
         id: contentPane
-        x:  25
+        x:  200
         y:  0
         width:  1341
         height:  768
     }
 
-    ViewSwitcher {
+    Component.ViewSwitcher {
         id: viewSwitcher
         // Rooted in contentPane
         root: contentPane
     }
 
-    ViewLoader {
+    Component.ViewLoader {
         id: personnages
-        viewSource: "PersonnagesMain.qml"
+        viewSource: "Personnage/PersonnagesMain.qml"
         keepLoaded: true        
     }
 
-    ViewLoader {
+    Component.ViewLoader {
         id: map
-        viewSource: "MapMain.qml"
+        viewSource: "Map/MapMain.qml"
         keepLoaded: true
     }
-
-    Rectangle {
-        id: rectangle
+    Menu {
+        id: menu
         x: 0
         y: 0
-        width: 74
-        height: 768
-        color: "#ffffff"
-
-        Menu {
-            id: menu
-            x: 0
-            y: 0
-            width: 75
-            height: 785
-            onListPersonnages: viewSwitcher.switchView(personnages, 5, "instant");
-            onMap: viewSwitcher.switchView(map, 5, "instant");
-        }
+        onListPersonnages: viewSwitcher.switchView(personnages, 5, "instant");
+        onMap: viewSwitcher.switchView(map, 5, "instant");
     }
 }

@@ -1,5 +1,5 @@
 import QtQuick 1.0
-
+import "../Component" as Component
 Item {
     width:  1136
     height:  768
@@ -46,7 +46,7 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: 16
                 spacing: 5
-                Button {
+                Component.Button {
                     id: name
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -56,7 +56,7 @@ Item {
                     text: "Azaleath"
                 }
 
-                Button {
+                Component.Button {
                     id: titre
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -66,7 +66,7 @@ Item {
                     text: "Grand mage"
                 }
 
-                Button {
+                Component.Button {
                     id: level
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -76,7 +76,7 @@ Item {
                     text: "Level 10"
                 }
 
-                Button {
+                Component.Button {
                     id: classe
                     anchors.left: parent.left
                     anchors.right: parent.right
@@ -86,7 +86,7 @@ Item {
                     text: "Mage"
                 }
 
-                Button {
+                Component.Button {
                     id: race
                     anchors.left: parent.left
                     anchors.right: parent.right

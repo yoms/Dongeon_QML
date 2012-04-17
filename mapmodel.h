@@ -12,13 +12,14 @@ public:
     enum FieldRoles {
         URLRole = Qt::UserRole + 1,
         PosYRole,
-        PosXRole
+        PosXRole,
+        FieldTypeRole
     };
 
     MapModel(QObject *parent = 0);
 
-    void setFields(QList<QList<Field> > &fields);
-    Field getField(int x, int y);
+    void setFields(QList<QList<Field *> > &fields);
+    const Field* getField(int x, int y);
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     int columnCount(const QModelIndex & parent = QModelIndex()) const;
@@ -30,7 +31,7 @@ public:
     QModelIndex parent(const QModelIndex &child) const;
 
 private:
-    QList<QList<Field> > fields_m;
+    QList<QList<Field*> > fields_m;
 };
 
 #endif //MAPMODEL_H

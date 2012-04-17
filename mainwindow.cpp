@@ -15,11 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MapLoader mapLoader(&mapModel_m);
+    MapLoader mapLoader(&m_mapModel, &m_fieldModel);
     mapLoader.loadMap("/home/guillaume/Workspace/Test_QGraphicsMap/1.map");
     this->ui->graphicsView->setSource(QUrl("qrc:/qml/qml/main.qml"));
     QDeclarativeContext *ctxt = this->ui->graphicsView->rootContext();
-    ctxt->setContextProperty("MapModel", &mapModel_m);
+    ctxt->setContextProperty("MapModel", &m_mapModel);
+    ctxt->setContextProperty("FieldModel", &m_fieldModel);
     //MapModel::getInstance()->debug();
 
 }

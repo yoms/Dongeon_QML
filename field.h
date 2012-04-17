@@ -6,18 +6,26 @@
 class Field
 {
 public:
-    enum Type{
-        Grass,
-        Land,
-        Water
-    };
+    Field(int, QString);
+    Field();
 
-    explicit Field(Field::Type type = Grass);
-    QString urlImage() const;
-    void setType(Field::Type type);
-    QString toSaveString();
+    inline QString urlImage() const
+    {
+        return m_url;
+    }
+
+    inline int type() const
+    {
+        return m_type;
+    }
+
+    inline QString toSaveString() const
+    {
+        return QString::number((int) m_type);
+    }
 private:
-    Type m_type;
+    int m_type;
+    QString m_url;
 
 };
 

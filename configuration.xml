@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldTypes>
+<FieldType id="0">image/terrain/grass.jpg</FieldType>
+<FieldType id="1">image/terrain/grass2.jpg</FieldType>
+<FieldType id="2">image/terrain/pave.jpg</FieldType>
+<FieldType id="3">image/terrain/pave2.jpg</FieldType>
+</FieldTypes>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "mapmodel.h"
+#include "fieldtypemodel.h"
 
 namespace Ui {
     class MainWindow;
@@ -26,7 +27,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    MapModel mapModel_m;
+    MapModel m_mapModel;
+    FieldTypeModel m_fieldModel;
 };
 
 #endif // MAINWINDOW_H

@@ -44,8 +44,6 @@ Item{
             color: "#ffffff"
             rotation: 45
         }
-        Component.onCompleted: console.log(personnageName.text)
-
     }
 
     Image {

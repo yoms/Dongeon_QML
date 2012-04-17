@@ -1,12 +1,11 @@
 import QtQuick 1.0
-import Qt.labs.gestures 1.0
 
 Rectangle {
     id: container
     width: 1311
     height: 778
     anchors.fill: parent
-    anchors.leftMargin: 75
+    anchors.leftMargin: 200
 
     Rectangle {
 
